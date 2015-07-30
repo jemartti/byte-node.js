@@ -8,7 +8,7 @@ var ByteSDK = require('../../../index');
 var BPromise = require('bluebird').Promise;
 var _s = require('underscore.string');
 var YodaSpeak = require('yoda-speak');
-var yoda = new YodaSpeak('4182FoDLbYmshWJPnS7hRcCD0Scdp1khcynjsnJJF00bocKprC');
+var yoda = new YodaSpeak('<config.mashapeKey>');
 BPromise.promisifyAll(yoda);
 
 
