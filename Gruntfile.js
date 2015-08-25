@@ -13,7 +13,6 @@ module.exports = function (grunt) {
             files: [
                 '*.js',
                 'examples/**/*.js',
-                'lib/**/*.js',
                 'src/**/*.js',
                 'test/**/*.js',
                 '!.git/**/*'
@@ -31,7 +30,6 @@ module.exports = function (grunt) {
             uses_defaults: [
                 '*.js',
                 'examples/**/*.js',
-                'lib/**/*.js',
                 'src/**/*.js',
                 'test/**/*.js'
             ]
@@ -54,7 +52,7 @@ module.exports = function (grunt) {
         grunt.log.writeln('Force setting environment to ' + setEnv);
         process.env.NODE_ENV = setEnv;
     });
-    grunt.registerTask('test', ['forceEnv:test', 'mochacli:all']);
+    grunt.registerTask('test', ['babel', 'forceEnv:test', 'mochacli:all']);
 
     grunt.registerTask('build', ['babel', 'jsbeautifier', 'jshint']);
 };
