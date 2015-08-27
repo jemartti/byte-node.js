@@ -29,7 +29,7 @@
         "node": "~0.12.7"
     },
     "homepage": "https://github.com/onehq/byte-sdk",
-    "license": "GPL-2.0",
+    "license": "MIT",
     "main": "index.js",
     "name": "byte-sdk",
     "repository": {
