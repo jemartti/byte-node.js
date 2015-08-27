@@ -120,6 +120,7 @@ class ParagraphObject extends ComputerObject {
 
         if (data.size) {
             assert(typeCheck('Number', data.size));
+            assert(data.size > 0);
             this.size = data.size;
         }
 
@@ -133,8 +134,10 @@ class ParagraphObject extends ComputerObject {
             assert(typeCheck('[Object]', data.attributes));
             for (var j = 0; j < data.attributes.length; ++j) {
                 assert(
-                    typeCheck('{type: String, range: (Number, Number)}',
-                        data.attributes[j])
+                    typeCheck(
+                        '{type: String, range: (Number, Number)}',
+                        data.attributes[j]
+                    )
                 );
                 assert(
                     [
@@ -309,6 +312,7 @@ class MusicObject extends ComputerObject {
 
         super('music', data);
 
+        assert(data.bpm > 0);
         this.bpm = data.bpm;
 
         assert(
@@ -323,13 +327,15 @@ class MusicObject extends ComputerObject {
             assert(typeCheck('Array', beat));
 
             // Hits
-            var re = new RegExp('^[A-G]{1}#?/{1}[0-9]{1}$');
+            var re = new RegExp('^[A-G]{1}#?/{1}(-1|[0-8]){1}$');
             for (var j = 0; j < data.instructions[i].length; ++j) {
                 var hit = beat[j];
                 assert(typeCheck(
                     '{time: Number, type: Number, bank: String, note: String, velo: Number, duration: Number}',
                     hit
                 ));
+
+                assert(hit.time >= 0);
 
                 assert(hit.type === 0 || hit.type === 1);
 
@@ -350,11 +356,10 @@ class MusicObject extends ComputerObject {
                         'sax',
                         'bell',
                         'roboto',
-                        'do',
-                        'drums'
+                        'do'
                     ].indexOf(hit.bank) >= 0);
 
-                    assert(re.text(hit.note));
+                    assert(re.test(hit.note));
                 } else if (hit.type === 1) {
                     assert(hit.bank === 'drums');
 
@@ -380,7 +385,7 @@ class MusicObject extends ComputerObject {
 
                 assert(hit.velo >= 0 && hit.velo <= 127);
 
-                assert(hit.duration === 1);
+                assert(hit.duration > 0);
             }
         }
         this.instructions = data.instructions;
