@@ -39,7 +39,7 @@ Look in `examples/computers` for some more complete examples.
 
 
 ## What is a Computer?
-Simply put, a Byte Computer is a minimal web–app that returns a `ComputerResponse()` object containing at least one `Object` (currently: Text, Link, Image, Gif, or Drawing).
+Simply put, a Byte Computer is a minimal web–app that returns a `ComputerResponse()` object containing at least one `Object` (currently: Paragraph, Text, Link, Image, Graphic, Gif, Video, or Music).
 
 ## Types of Computers
 There are two types of computers: those that require config and those that do not.
