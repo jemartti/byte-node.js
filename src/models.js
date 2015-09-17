@@ -92,6 +92,11 @@ class ComputerObject {
         } else {
             this.effects = [];
         }
+
+        if (data.originalSrc) {
+            assert(typeCheck('String', data.originalSrc));
+            this.originalSrc = data.originalSrc;
+        }
     }
 }
 

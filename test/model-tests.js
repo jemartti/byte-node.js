@@ -88,6 +88,7 @@ describe('Testing Computer Model: ', function () {
     it('Does a basic ImageObject creation', function* (done) {
         new ByteSDK.ImageObject({
             'src': 'http://i.imgur.com/dv1QgwX.jpg',
+            'originalSrc': 'http://i.imgur.com/dv1QgwX.jpg',
             'scaleMode': 'fill',
             'frame': [1, 2, 3, 4],
             'name': 'dog1',
